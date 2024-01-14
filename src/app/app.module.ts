@@ -10,6 +10,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -20,7 +22,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule,  // Agrega esta línea
+    MatIconModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

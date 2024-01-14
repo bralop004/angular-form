@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,7 @@ export class AppComponent {
 
   form: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private toastr: ToastrService) {
     this.form = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -27,6 +28,19 @@ export class AppComponent {
   }
 
   sendValues() {
-    console.log('Enviados correctamente');
+    // Verifica si el formulario es válido
+    if (this.form.valid) {
+      // Lógica para enviar los valores
+      console.log('Enviados correctamente');
+
+      // Muestra una notificación de éxito
+      this.toastr.success('Los datos se enviaron correctamente', 'Éxito');
+    } else {
+      // Muestra una notificación de error si el formulario no es válido
+      this.toastr.error(
+        'Por favor, complete todos los campos correctamente',
+        'Error'
+      );
+    }
   }
 }
